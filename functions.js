@@ -1,16 +1,6 @@
 // TODO: If display is 0, and result is 0, overright display zero with next number input
 //        or otherwise remove trailing zero on left of string.
 
-// TODO: implement equals/result functionality + tie in to equals button
-
-// TODO: implement minus functionality + tie in to minus button
-
-// TODO: implement multiply functionality + tie in to multiply button
-
-// TODO: implement divide functionality + tie in to divide button
-
-// TODO: clear screen when pressing operator button
-
 // TODO: clear screen when pressing number button IF operator button has been pressed
 
 // TODO: if sum-string-display is unpopulated, do not populate it (i.e. when entering first number)
@@ -19,7 +9,13 @@
 
 // TODO: if overall entries == 16, disallow further entry + warn user
 
-// TODO: do not allow multiples of one real-world operation at a time (e.g. ++, --, /+, *+, etc.).
+// TODO: do not allow multiples of one real-world operation at a time (e.g. ++, --, /+, *+, etc.)
+
+// TODO: incorporate BODMAS so the calculations are ACTUALLY CORRECT
+
+// TODO:  implement keyboard button functionality
+
+// TODO: import calculator font
 
 
 
@@ -49,22 +45,27 @@ function returnNumber(num) {
                 operatorCheck = false; 
                 break;
             case "-":
+                document.getElementById('sum-string-display').innerHTML += thisNum;
+                heldValue -= num;
+                operatorCheck = false; 
                 break;
             case "*":
+                document.getElementById('sum-string-display').innerHTML += thisNum;
+                heldValue *= num;
+                operatorCheck = false; 
                 break;
             case "/":
-                break;
-            default:
+                document.getElementById('sum-string-display').innerHTML += thisNum;
+                heldValue /= num;
+                operatorCheck = false; 
                 break;
     
         }
 
     } else {
 
-        document.getElementById('sum-string-display').innerHTML += thisNum.toString()
-        
-        ;
-        result += num;
+        document.getElementById('sum-string-display').innerHTML += thisNum.toString();
+        heldValue += num;
         operatorCheck = false;
 
     }
@@ -75,9 +76,9 @@ function returnNumber(num) {
 function setOperator (op) {
 
     operator = op;
+    operatorCheck = true;
     document.getElementById('screen').value = "";
     document.getElementById('sum-string-display').innerHTML += operator;
-    document.getElementById('testP').innerHTML += operator;
 
 }
 
@@ -86,10 +87,13 @@ function clearAll() {
 
     displayValue = 0.0;
     currentValue = 0.0;
+    result = 0.0;
+    operatorCheck = false;
     document.getElementById('screen').value = displayValue;
     document.getElementById('sum-string-display').innerHTML = "";
 }
 
+// calculates final answer
 function equals() {
 
     result = heldValue;
@@ -97,5 +101,6 @@ function equals() {
     document.getElementById('sum-string-display').innerHTML = "";
     document.getElementById('screen').style.textAlign = "left";
     document.getElementById('screen').style.fontWeight = "bold";
+    Document.getElementById('result_test').innerHTML += result;
 
 }
