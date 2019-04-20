@@ -30,39 +30,85 @@
 <title>jsCalculator</title>
 <script src="functions.js"></script>
 <link rel="stylesheet" type="text/css" href="styles.css">
+<!-- fontawesome import -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" 
+integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" 
+crossorigin="anonymous">
+<!-- noto sans/open sans import -->
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans|Open+Sans" 
+rel="stylesheet"> 
 </head>
 <body>
 
-    <div class="calculator">
 
-            <div id="sum-string-display">
-                
+    <div class="wrapper">
+
+        <div class="header">
+
+            <div class="title">js
+                <i class="fas fa-calculator"></i>
+            </div>
+            <div class="links">
+                <a href="https://github.com/yerbestpal">
+                    <i class="fab fa-github"></i>
+                </a>
             </div>
 
-            <input type="text" class="calculator-screen" id="screen" value="0" disabled>
-            <!--A disabled input element is unusable and un-clickable.-->
-        
-            <div class="calculator-keys">
-        
-                <button class="operator" id="plus" value="+" onclick="setOperator('+');">+</button>
-                <button class="operator" id="minus" value="-" onclick="setOperator('-');">-</button>
-                <button class="operator" id="multiply" value="*" onclick="setOperator('*');">*</button>
-                <button class="operator" id="divide" value="/" onclick="setOperator('/');">/</button>
-                <button value="7" id="seven" onclick="returnNumber(7);">7</button>
-                <button value="8" id="eight" onclick="returnNumber(8);">8</button>
-                <button value="9" id="nine" onclick="returnNumber(9);">9</button>
-                <button value="4" id="four" onclick="returnNumber(4);">4</button>
-                <button value="5" id="five" onclick="returnNumber(5);">5</button>
-                <button value="6" id="six" onclick="returnNumber(6);">6</button>
-                <button value="1" id="one" onclick="returnNumber(1);">1</button>
-                <button value="2" id="two" onclick="returnNumber(2);">2</button>
-                <button value="3" id="three" onclick="returnNumber(3);">3</button>
-                <button value="0" id="zero" onclick="returnNumber(0);">0</button>
-                <button class="decimal" value=".">.</button>
-                <button class="all-clear" value="all-clear" onclick="clearAll();">AC</button>
-                <button class="equals-sign" value="=" onclick="equals();">=</button>
-        
-            </div>
+        </div>
+
+        <div class="content">
+
+                <div class="body-text">
+
+                    <p>A simple calculator written with Javascript.</p>
+                    <p>Check it out on Github and tell me how to improve it.</p>
+                    <p>Front-end taken entirely from <a href="https://freshman.tech/css-grid-calculator/">this guide</a> 
+                        by Ayo Isaiah.</p>
+                    <br>
+                    <p id="hint">Hint: try using your keyboard!</p>
+            
+                </div>
+
+                <div class="calulator-container">
+
+                        <div class="calculator">
+
+                                <!-- this is the display that shows the sum being built above the main screen -->
+                                <div id="sum-string-display"></div>
+                    
+                                <!--A disabled input element is unusable and un-clickable.-->
+                                <input type="text" class="calculator-screen" id="screen" 
+                                value="0" disabled><div class="calculator-keys">
+                            
+                                    <button class="operator" id="plus" value="+" onclick="setOperator('+');">+</button>
+                                    <button class="operator" id="minus" value="-" onclick="setOperator('-');">-</button>
+                                    <button class="operator" id="multiply" value="*" onclick="setOperator('*');">*</button>
+                                    <button class="operator" id="divide" value="/" onclick="setOperator('/');">/</button>
+                                    <button value="7" id="seven" onclick="returnNumber(7);">7</button>
+                                    <button value="8" id="eight" onclick="returnNumber(8);">8</button>
+                                    <button value="9" id="nine" onclick="returnNumber(9);">9</button>
+                                    <button value="4" id="four" onclick="returnNumber(4);">4</button>
+                                    <button value="5" id="five" onclick="returnNumber(5);">5</button>
+                                    <button value="6" id="six" onclick="returnNumber(6);">6</button>
+                                    <button value="1" id="one" onclick="returnNumber(1);">1</button>
+                                    <button value="2" id="two" onclick="returnNumber(2);">2</button>
+                                    <button value="3" id="three" onclick="returnNumber(3);">3</button>
+                                    <button value="0" id="zero" onclick="returnNumber(0);">0</button>
+                                    <button class="decimal" value=".">.</button>
+                                    <button class="all-clear" value="all-clear" onclick="clearAll();">AC</button>
+                                    <button class="equals-sign" value="=" onclick="equals();">=</button>
+                            
+                                </div>
+                    
+                        </div>
+
+                </div>
+
+        </div>
+
+        <div class="footer">
+            <p>Copyright Ross McLean 2019</p>
+        </div>
 
     </div>
     

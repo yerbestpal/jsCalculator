@@ -1,36 +1,123 @@
 * {
-    font-family: monospace;
+    font-family: 'Open Sans', sans-serif;
+    color: #1a1a1a;
 }
 
-.tests {
 
-    font-size: 15px;
-
-}
+@font-face {
+    font-family: 'digital7';
+    src: url('assets/fonts/digital-7_italic.ttf')  format('truetype');
+  }
 
 
 html {
     font-size: 62.5%;
     box-sizing: border-box;
-  }
-  
-  /* this seems to append CSS to the beginning and end of elements*/
-  *, *::before, *::after {
+    min-height: 100%;
+}
+
+
+a {
+
+    color: #0088CC;
+    text-decoration: none;
+
+}
+
+
+/* this seems to append CSS to the beginning and end of elements*/
+*, *::before, *::after {
+margin: 0;
+padding: 0;
+box-sizing: inherit;
+}
+
+
+.wrapper {
+
+    display: grid;
     margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-  }
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 100%;
+
+}
+
+
+.header {
+
+    display: grid;
+    font-size: 40px;
+    /* color: white; */
+    background-color: #FFF;
+    padding: 20px 20px;
+    grid-template-columns: repeat(2, 1fr);
+
+}
+
+
+.links {
+
+    text-align: right;
+
+}
+
+
+.content {
+
+    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    grid-column-gap: 20px;
+    background-color: #FFF;
+    padding: 100px 100px;
+
+}
+
+
+.body-text {
+
+    font-size: 30px;
+    margin: auto;
+    text-align: center;
+
+}
+
+
+#hint {
+
+    color: #abacae;
+    font-size: 22px;
+
+}
+
+
+.calculator-container {
+
+    margin: auto;
+
+}
+
+
+.footer {
+
+    text-align: center;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+}
 
 
 .calculator {
 
+    font-family: monospace;
     border: 1px solid #ccc;
     border-radius: 5px;
-    position: absolute;
     width: 400px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin: auto;
 }
 
 
@@ -38,6 +125,7 @@ html {
 
     width: 100%;
     font-size: 5rem;
+    font-family: 'digital7', monospace;
     height: 80px;
     border: none;
     background-color: #252525;
@@ -52,6 +140,7 @@ html {
 
     width: 100%;
     font-size: 3rem;
+    font-family: 'digital7', monospace;
     height: 40px;
     border: none;
     background-color: #252525;
@@ -59,7 +148,8 @@ html {
     text-align: left;
     padding-right: 20px;
     padding-left: 10px;
-    padding-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 
 }
 
@@ -140,5 +230,3 @@ button:hover {
     grid-column-gap: 20px; /*grip-gap: 20px 20px; can also do this*/
     padding: 20px;   
 }
-
-

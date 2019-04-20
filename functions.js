@@ -1,8 +1,6 @@
 // TODO: If display is 0, and result is 0, overright display zero with next number input
 //        or otherwise remove trailing zero on left of string.
 
-// TODO: clear screen when pressing number button IF operator button has been pressed
-
 // TODO: if sum-string-display is unpopulated, do not populate it (i.e. when entering first number)
 
 // TODO: if value entry == 9, disallow further entry + warn user
@@ -15,15 +13,13 @@
 
 // TODO:  implement keyboard button functionality
 
-// TODO: import calculator font
-
 
 
 // global variables
 // var displayValue = 0.0;
 // var currentValue = 0.0;
-var heldValue = 0;
-var result;
+var heldValue = 0.0;
+var result = 0.0;
 var operator = "";
 var operatorCheck = false;
 
@@ -33,6 +29,7 @@ function returnNumber(num) {
 
     var thisNum = num;
     document.getElementById('screen').style.textAlign = "right";
+    if (heldValue == 0) document.getElementById('screen').value = "";
     document.getElementById('screen').value += num;
 
     if (operatorCheck == true) {
@@ -85,11 +82,11 @@ function setOperator (op) {
 // wipe set variable and screen values to 0
 function clearAll() {
 
-    displayValue = 0.0;
-    currentValue = 0.0;
+    heldValue = 0.0;
     result = 0.0;
     operatorCheck = false;
-    document.getElementById('screen').value = displayValue;
+    document.getElementById('screen').style.textAlign = "right";
+    document.getElementById('screen').value = heldValue;
     document.getElementById('sum-string-display').innerHTML = "";
 }
 
@@ -97,10 +94,10 @@ function clearAll() {
 function equals() {
 
     result = heldValue;
+    operatorCheck = false;
     document.getElementById('screen').value = result;
     document.getElementById('sum-string-display').innerHTML = "";
     document.getElementById('screen').style.textAlign = "left";
-    document.getElementById('screen').style.fontWeight = "bold";
     Document.getElementById('result_test').innerHTML += result;
 
 }
