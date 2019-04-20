@@ -84,7 +84,17 @@ box-sizing: inherit;
 }
 
 
-#hint {
+.instructions {
+
+    text-align: left;
+    margin-left: 40%;
+    color: #333333;
+    font-size: 22px;
+
+}
+
+
+.instructions em {
 
     color: #abacae;
     font-size: 22px;
@@ -109,6 +119,13 @@ box-sizing: inherit;
     bottom: 0;
     left: 0;
     right: 0;
+
+}
+
+
+.footer p {
+
+    color: #abacae;
 
 }
 

@@ -3,16 +3,9 @@
 
 // TODO: if sum-string-display is unpopulated, do not populate it (i.e. when entering first number)
 
-// TODO: if value entry == 9, disallow further entry + warn user
-
-// TODO: if overall entries == 16, disallow further entry + warn user
-
 // TODO: do not allow multiples of one real-world operation at a time (e.g. ++, --, /+, *+, etc.)
 
 // TODO: incorporate BODMAS so the calculations are ACTUALLY CORRECT
-
-// TODO:  implement keyboard button functionality
-
 
 
 // global variables
@@ -24,10 +17,69 @@ var operator = "";
 var operatorCheck = false;
 
 
+document.addEventListener("keydown", function (event){
+
+    switch (event.key) {
+        case  "1":
+            returnNumber(1);
+            break;
+        case "2":
+            returnNumber(2);
+            break;
+        case "3":
+            returnNumber(3);
+            break;
+        case "4":
+            returnNumber(4);
+            break;
+        case "5":
+            returnNumber(5);
+            break;
+        case "6":
+            returnNumber(6);
+            break;
+        case "7":
+            returnNumber(7);
+            break;
+        case "8":
+            returnNumber(8);
+            break;
+        case "9":
+            returnNumber(9);
+            break;
+        case "0":
+            returnNumber(0);
+            break;
+        case "=": // using = for addition so user does not need a key combination
+            setOperator('+');
+            break;
+        case "-":
+            setOperator('-');
+            break;
+        case "x": 
+            setOperator('*');
+            break;
+        case "/": 
+            setOperator('/');
+            break;
+        case "Enter":
+            equals();
+            break;
+        case "c":
+            clearAll();
+            break;
+        default:
+            console.log("That key is not a number or operator!");
+            break;
+    }   
+
+})
+
+
 // updates variable and screen values to value of number button pressed
 function returnNumber(num) {
 
-    if (document.getElementById('screen').value.length <= 8) {
+    if (document.getElementById('screen').value.length <= 9) {
 
         var thisNum = num;
         document.getElementById('screen').style.textAlign = "right";
@@ -68,6 +120,7 @@ function returnNumber(num) {
             operatorCheck = false;
 
         }
+
     } else {
 
         console.log("There is a number limit.");
