@@ -27,43 +27,50 @@ var operatorCheck = false;
 // updates variable and screen values to value of number button pressed
 function returnNumber(num) {
 
-    var thisNum = num;
-    document.getElementById('screen').style.textAlign = "right";
-    if (heldValue == 0) document.getElementById('screen').value = "";
-    document.getElementById('screen').value += num;
+    if (document.getElementById('screen').value.length <= 8) {
 
-    if (operatorCheck == true) {
+        var thisNum = num;
+        document.getElementById('screen').style.textAlign = "right";
+        if (heldValue == 0) document.getElementById('screen').value = "";
+        document.getElementById('screen').value += num;
 
-        switch (operator) {
+        if (operatorCheck == true) {
 
-            case "+":
-                document.getElementById('sum-string-display').innerHTML += thisNum;
-                heldValue += num;
-                operatorCheck = false; 
-                break;
-            case "-":
-                document.getElementById('sum-string-display').innerHTML += thisNum;
-                heldValue -= num;
-                operatorCheck = false; 
-                break;
-            case "*":
-                document.getElementById('sum-string-display').innerHTML += thisNum;
-                heldValue *= num;
-                operatorCheck = false; 
-                break;
-            case "/":
-                document.getElementById('sum-string-display').innerHTML += thisNum;
-                heldValue /= num;
-                operatorCheck = false; 
-                break;
-    
+            switch (operator) {
+
+                case "+":
+                    document.getElementById('sum-string-display').innerHTML += thisNum;
+                    heldValue += num;
+                    operatorCheck = false; 
+                    break;
+                case "-":
+                    document.getElementById('sum-string-display').innerHTML += thisNum;
+                    heldValue -= num;
+                    operatorCheck = false; 
+                    break;
+                case "*":
+                    document.getElementById('sum-string-display').innerHTML += thisNum;
+                    heldValue *= num;
+                    operatorCheck = false; 
+                    break;
+                case "/":
+                    document.getElementById('sum-string-display').innerHTML += thisNum;
+                    heldValue /= num;
+                    operatorCheck = false; 
+                    break;
+        
+            }
+
+        } else {
+
+            document.getElementById('sum-string-display').innerHTML += thisNum.toString();
+            heldValue += num;
+            operatorCheck = false;
+
         }
-
     } else {
 
-        document.getElementById('sum-string-display').innerHTML += thisNum.toString();
-        heldValue += num;
-        operatorCheck = false;
+        console.log("There is a number limit.");
 
     }
 
