@@ -6,10 +6,12 @@
 
 
 // global variables
-var numString = ""; // used to build string to be converted to float and stored in heldValue
-var heldValue = 0.0;
+var numString = ""; // used to build string to be converted to float and stored in oldValue
+var oldValue = 0.0;
+var newValue = 0.0;
 var result = 0.0;
-var operatorCheck = false; // checks if operator has been pressed.
+var plusCheck, minusCheck, multiplyCheck, divideCheck = false;
+var operator = "";
 
 
 // updates variable and screen values to value of number button pressed
@@ -17,14 +19,32 @@ function returnNumber(num) {
 
     if (document.getElementById('screen').value.length <= 9) {
 
-        var thisNum = num;
         if (numString == "") document.getElementById('screen').value = null;
         document.getElementById('screen').value += num;
         document.getElementById('screen').style.textAlign = "right";
-        document.getElementById('sum-string-display').innerHTML += thisNum;
-        numString += thisNum; 
-        operatorCheck = false;
+        document.getElementById('sum-string-display').innerHTML += num;
+        numString += num;
+
         console.log("numString: " + numString);
+        console.log("oldValue: " + oldValue);
+
+        if (plusCheck) {
+
+            result = oldValue + Number(numString);
+    
+        } else if (minusCheck) {
+    
+            result = oldValue - Number(numString);
+    
+        } else if (multiplyCheck) {
+    
+            result = oldValue * Number(numString);
+    
+        } else if (divideCheck) {
+    
+            result = oldValue / Number(numString);
+    
+        }
 
     } else {
 
@@ -45,20 +65,35 @@ function setOperator (op) {
     switch (op) {
 
         case "+":
-            heldValue += Number(numString);  
+            newValue += Number(numString);
+            oldValue += newValue;
             numString = "";
+            operator = '+';
+            plusCheck = true;
             break;
         case "-":
-            heldValue -= Number(numString);  
-            numString = ""; 
+
+            if (!oldValue > 0) {
+
+                newValue += Number(numString);
+                oldValue += newValue;
+
+            } 
+            numString = "";
+            operator = '-';
+            minusCheck = true;
             break;
         case "*":
-            heldValue *= Number(numString);  
-            numString = ""; 
+            if (!oldValue > 0) oldValue += Number(numString);
+            numString = "";
+            operator = '*';
+            multiplyCheck = true;
             break;
         case "/":
-            heldValue /= Number(numString);  
+            if (!oldValue > 0) oldValue += Number(numString);
             numString = "";
+            operator = '/';
+            multiplyCheck = true;
             break;
 
     }
@@ -69,11 +104,11 @@ function setOperator (op) {
 function clearAll() {
 
     numString = "";
-    heldValue = 0.0;
+    oldValue = 0.0; 
     result = 0.0;
     operatorCheck = false;
     document.getElementById('screen').style.textAlign = "right";
-    document.getElementById('screen').value = heldValue;
+    document.getElementById('screen').value = oldValue;
     document.getElementById('sum-string-display').innerHTML = "";
     console.log("Clear All");
 }
@@ -81,19 +116,18 @@ function clearAll() {
 // calculates final answer
 function equals() {
 
-    if (numString != "" || numString > 0) {
-
-        heldValue += Number(numString);
-        numString = "";
-
-    }
-
-    result = heldValue;
-    operatorCheck = false;
+    plusCheck, minusCheck, multiplyCheck, divideCheck = false;
     document.getElementById('screen').value = result;
     document.getElementById('sum-string-display').innerHTML = "";
     document.getElementById('screen').style.textAlign = "left";
+
+    oldValue = result;
+    numString = "";
+    console.log("---------------------------");
     console.log("result: " + result);
+    console.log("numString: " + numString);
+    console.log("oldValue: " + oldValue);
+    console.log("---------------------------");
 
 }
 
@@ -103,7 +137,7 @@ document.addEventListener("keydown", function (event) {
         case  "1":
             returnNumber(1);
             // var numAudio = new Audio("assets/audio/number.wav");
-            numAudio.play();
+            // numAudio.play();
             break;
         case "2":
             returnNumber(2);
